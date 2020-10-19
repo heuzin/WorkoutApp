@@ -61,10 +61,8 @@ class WorkoutApp extends React.Component {
         };
     };
     render() {
-        const title = 'Workout app'
         return (
             <div>
-                <Header title={title}/>
                 <Exercises exercise={this.state.exercise} handleDeleteAll={this.handleDeleteAll} handleDeleteExercise={this.handleDeleteExercise}/>
                 <AddExercise handleAddExercise={this.handleAddExercise}/>
             </div>
