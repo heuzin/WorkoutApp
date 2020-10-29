@@ -28,6 +28,7 @@ module.exports = {
         maxAssetSize: 512000
     },
     devServer: {
-        contentBase: path.join(__dirname, 'public')
+        contentBase: path.join(__dirname, 'public'),
+        historyApiFallback: true,
     }
 };

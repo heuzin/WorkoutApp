@@ -1,10 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WorkoutApp from './components/WorkoutApp';
+import { Provider } from 'react-redux';
 import AppRouter from '../src/routers/AppRouter'
+import configureStore from './store/configureStore'
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
-let appRoot = document.getElementById('app');
+const store = configureStore();
 
-ReactDOM.render(<AppRouter />, appRoot);
+const jsx = (
+    <Provider store={store}>
+        <AppRouter />
+    </Provider>
+)
+
+let appRoot = document.getElementById('app');
+ReactDOM.render(jsx, appRoot);
