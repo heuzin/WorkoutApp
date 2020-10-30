@@ -14,7 +14,6 @@ const Exercises = (props) => {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         exercises: state
     }

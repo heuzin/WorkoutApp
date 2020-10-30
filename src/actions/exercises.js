@@ -1,7 +1,10 @@
+import { v4 as uuidv4 } from 'uuid';
+
 // ADD CHEST
-const addChestExercise = ({ name = '', series = 0,  reps = 0, note = '', member = 'Chest' }) => ({
+const addChestExercise = ({ name = '', series = 0,  reps = 0, note = '', member = 'Chest' } = {}) => ({
     type: 'ADD_CHEST_EXERCISE',
     exercise: {
+        id: uuidv4(),
         name,
         series,
         reps,
@@ -11,9 +14,10 @@ const addChestExercise = ({ name = '', series = 0,  reps = 0, note = '', member 
 })
 
 // ADD BICEPTS
-const addBicepsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Biceps'}) => ({
+const addBicepsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Biceps'} = {}) => ({
     type: 'ADD_BICEPS_EXERCISE',
     exercise: {
+        id: uuidv4(),
         name,
         series,
         reps,
@@ -23,9 +27,10 @@ const addBicepsExercise = ({ name = '', series = 0, reps = 0, note = '', member 
 })
 
 // ADD TRICEPS
-const addTricepsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Triceps'}) => ({
+const addTricepsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Triceps'} = {}) => ({
     type: 'ADD_TRICEPS_EXERCISE',
     exercise: {
+        id: uuidv4(),
         name,
         series,
         reps,
@@ -35,9 +40,10 @@ const addTricepsExercise = ({ name = '', series = 0, reps = 0, note = '', member
 })
 
 // ADD SHOULDER
-const addShoulderExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Shoulder'}) => ({
+const addShoulderExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Shoulder'} = {}) => ({
     type: 'ADD_SHOULDER_EXERCISE',
     exercise: {
+        id: uuidv4(),
         name,
         series,
         reps,
@@ -47,9 +53,10 @@ const addShoulderExercise = ({ name = '', series = 0, reps = 0, note = '', membe
 })
 
 // ADD LEGS
-const addLegsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Legs'}) => ({
+const addLegsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Legs'} = {}) => ({
     type: 'ADD_LEGS_EXERCISE',
     exercise: {
+        id: uuidv4(),
         name,
         series,
         reps,
@@ -59,7 +66,11 @@ const addLegsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 
 })
 
 // REMOVE EXERCISE
+const removeExercise = ({ id } = {}) => ({
+    type: 'REMOVE_EXERCISE',
+    id
+})
 
 // EDIT EXERCISE
 
-export { addChestExercise, addBicepsExercise, addTricepsExercise, addShoulderExercise, addLegsExercise }
+export { addChestExercise, addBicepsExercise, addTricepsExercise, addShoulderExercise, addLegsExercise, removeExercise }
