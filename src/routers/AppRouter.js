@@ -1,17 +1,16 @@
 import React from 'react';
 import Header from '../components/Header'
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import WorkoutApp from '../components/WorkoutApp';
-import AddExercise from '../components/AddExercise';
+import WorkoutDashboardApp from '../components/WorkoutDashboardPage';
 
 const AppRouter = () => {
     const title = 'Workout app'
     return (   
         <BrowserRouter>
-            <Header title={title}/>
+            <Header />
             <Switch>
-                <Route path='/' component={WorkoutApp} exact={true}/>
-                <Route path='/create' component={AddExercise} />
+                <Route path='/' component={WorkoutDashboardApp} exact={true}/>
+                <Route path='/create' />
             </Switch>
         </BrowserRouter>
     )

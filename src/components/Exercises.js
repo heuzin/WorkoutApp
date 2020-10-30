@@ -4,8 +4,7 @@ import ExerciseName from './ExerciseName';
 const Exercises = (props) => {
     return (
         <div>
-            <button onClick={props.handleDeleteAll}>Remove All</button>
-            {props.exercise.map((exerciseName) => <ExerciseName handleDeleteExercise={props.handleDeleteExercise} key={exerciseName} exerciseText={exerciseName}/>)}
+            <ExerciseName />
         </div>
     );
 };
