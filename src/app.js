@@ -11,11 +11,13 @@ const store = configureStore();
 
 store.subscribe(() => {
     const state = store.getState()
-    const exercises = state.exercises
+    const exercises = state
     console.log(exercises)
 })
 
 store.dispatch(addExercise({ name: 'Rosca Direta', series: 10, reps: 10, member: 'Biceps'}))
+store.dispatch(addExercise({ name: 'Rosca Martelo', series: 10, reps: 10, member: 'Biceps'}))
+store.dispatch(addExercise({ name: 'Rosca Inversa', series: 10, reps: 10, member: 'Biceps'}))
 
 const jsx = (
     <Provider store={store}>

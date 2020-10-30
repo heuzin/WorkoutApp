@@ -4,7 +4,8 @@ const exerciseReducer = (state = exerciseReducerDefaultState, action) => {
     switch (action.type) {
         case 'ADD_EXERCISE':
             return [
-                state.concat(action.exercise)
+                ...state,
+                action.exercise
             ]
         default:
             return state
