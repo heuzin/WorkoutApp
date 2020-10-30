@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from '../src/routers/AppRouter'
 import configureStore from './store/configureStore'
-import { addExercise } from './actions/exercises'
+import { addChestExercise, addBicepsExercise, addTricepsExercise, addShoulderExercise, addLegsExercise } from './actions/exercises'
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
@@ -15,9 +15,11 @@ store.subscribe(() => {
     console.log(exercises)
 })
 
-store.dispatch(addExercise({ name: 'Rosca Direta', series: 10, reps: 10, member: 'Biceps'}))
-store.dispatch(addExercise({ name: 'Rosca Martelo', series: 10, reps: 10, member: 'Biceps'}))
-store.dispatch(addExercise({ name: 'Rosca Inversa', series: 10, reps: 10, member: 'Biceps'}))
+store.dispatch(addChestExercise({ name: 'Supino', series: 10, reps: 10}))
+store.dispatch(addBicepsExercise({ name: 'Rosca Martelo', series: 10, reps: 10}))
+store.dispatch(addTricepsExercise({ name: 'Triceps Testa', series: 10, reps: 10}))
+store.dispatch(addShoulderExercise({ name: 'Elevacao Frontal', series: 10, reps: 10}))
+store.dispatch(addLegsExercise({ name: 'Leg Press', series: 10, reps: 10}))
 
 const jsx = (
     <Provider store={store}>
