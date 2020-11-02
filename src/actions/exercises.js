@@ -72,5 +72,10 @@ const removeExercise = ({ id } = {}) => ({
 })
 
 // EDIT EXERCISE
+const editExercise = (id, updates) => ({
+    type: 'EDIT_EXERCISE',
+    id,
+    updates
+})
 
-export { addChestExercise, addBicepsExercise, addTricepsExercise, addShoulderExercise, addLegsExercise, removeExercise }
+export { addChestExercise, addBicepsExercise, addTricepsExercise, addShoulderExercise, addLegsExercise, removeExercise, editExercise }

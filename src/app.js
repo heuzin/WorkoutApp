@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from '../src/routers/AppRouter'
 import configureStore from './store/configureStore'
-import { addChestExercise, addBicepsExercise, addTricepsExercise, addShoulderExercise, addLegsExercise, removeExercise } from './actions/exercises'
+import { addChestExercise, addBicepsExercise, addTricepsExercise, addShoulderExercise, addLegsExercise, removeExercise, editExercise } from './actions/exercises'
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
@@ -30,6 +30,10 @@ const jsx = (
         <AppRouter />
     </Provider>
 )
+
+const id02 = exercises[2].id
+
+store.dispatch(editExercise( id02, { series: 20 } ))
 
 let appRoot = document.getElementById('app');
 ReactDOM.render(jsx, appRoot);

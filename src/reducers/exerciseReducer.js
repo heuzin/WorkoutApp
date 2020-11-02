@@ -31,6 +31,17 @@ const exerciseReducer = (state = exerciseReducerDefaultState, action) => {
             return state.filter(({ id }) => {
                 return action.id !== id
             })
+        case 'EDIT_EXERCISE':
+            return state.map((exercise) => {
+                if (exercise.id === action.id) {
+                    return {
+                        ...exercise,
+                        ...action.updates
+                    }
+                } else {
+                    return exercise
+                }
+            })
         default:
             return state
     }
