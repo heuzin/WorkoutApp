@@ -4,10 +4,10 @@ class ExerciseForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: '',
-            series: '',
-            reps: '',
-            notes: ''
+            name: props.exercise ? props.exercise.name : '',
+            series: props.exercise ? props.exercise.series : '',
+            reps: props.exercise ? props.exercise.reps : '',
+            notes: props.exercise ? props.exercise.notes : ''
         }
     }
     onNameChange = (e) => {

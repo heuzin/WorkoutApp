@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import WorkoutDashboardApp from '../components/WorkoutDashboardPage';
 import AddExercise from '../components/AddExercise';
+import editExercisePage from '../components/EditExercisePage';
 
 const AppRouter = () => {
     const title = 'Workout app'
@@ -12,6 +13,7 @@ const AppRouter = () => {
             <Switch>
                 <Route path='/' component={WorkoutDashboardApp} exact={true}/>
                 <Route path='/create' component={AddExercise} />
+                <Route path='/edit/:id' component={editExercisePage} />
             </Switch>
         </BrowserRouter>
     )

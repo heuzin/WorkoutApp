@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ExerciseName = ({ name, member, series, reps }) => {
+const ExerciseName = ({ id, name, member, series, reps }) => {
     return (
         <div>
-            Exercise: {name} - {series} - {reps} - {member}
+            <Link to={`/edit/${id}`}>
+                <h1>{name}</h1>
+            </Link>
+            <p>{series} - {reps} - {member}</p>
         </div>
     );
 };
