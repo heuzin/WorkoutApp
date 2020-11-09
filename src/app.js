@@ -18,7 +18,7 @@ store.subscribe(() => {
 store.dispatch(addChestExercise({ name: 'Supino', series: 10, reps: 10}))
 store.dispatch(addBicepsExercise({ name: 'Rosca Martelo', series: 10, reps: 10}))
 store.dispatch(addTricepsExercise({ name: 'Triceps Testa', series: 10, reps: 10}))
-// store.dispatch(addShoulderExercise({ name: 'Elevacao Frontal', series: 10, reps: 10}))
+store.dispatch(addShoulderExercise({ name: 'Elevacao Frontal', series: 10, reps: 10}))
 // store.dispatch(addLegsExercise({ name: 'Leg Press', series: 10, reps: 10}))
 store.dispatch(addChestExercise({ name: 'Sssso', series: 10, reps: 10}))
 

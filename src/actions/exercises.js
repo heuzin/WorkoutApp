@@ -42,7 +42,7 @@ const addTricepsExercise = ({ name = '', series = 0, reps = 0, note = '', member
 // ADD SHOULDER
 const addShoulderExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Shoulder'} = {}) => ({
     type: 'ADD_SHOULDER_EXERCISE',
-    exercise: {
+    shoulders: {
         id: uuidv4(),
         name,
         series,
