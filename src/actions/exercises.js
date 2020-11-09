@@ -55,7 +55,19 @@ const addShoulderExercise = ({ name = '', series = 0, reps = 0, note = '', membe
 // ADD LEGS
 const addLegsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Legs'} = {}) => ({
     type: 'ADD_LEGS_EXERCISE',
-    exercise: {
+    legs: {
+        id: uuidv4(),
+        name,
+        series,
+        reps,
+        note,
+        member
+    }
+})
+
+const addBackExercise = ({ name='', series = 0, reps = 0, note = '', member = 'back'} ={}) => ({
+    type: 'ADD_BACK_EXERCISE',
+    back: {
         id: uuidv4(),
         name,
         series,
@@ -78,4 +90,4 @@ const editExercise = (id, updates) => ({
     updates
 })
 
-export { addChestExercise, addBicepsExercise, addTricepsExercise, addShoulderExercise, addLegsExercise, removeExercise, editExercise }
+export { addChestExercise, addBicepsExercise, addTricepsExercise, addShoulderExercise, addLegsExercise, addBackExercise, removeExercise, editExercise }

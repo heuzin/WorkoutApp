@@ -8,6 +8,8 @@ import ChestPage from '../components/ChestPage'
 import BicepsPage from '../components/BicepsPage';
 import TricepsPage from '../components/TricepsPage';
 import ShouldersPage from '../components/ShouldersPage';
+import BackPage from '../components/BackPage'
+import LegsPage from '../components/LegsPage';
 
 const AppRouter = () => {
     const title = 'Workout app'
@@ -22,6 +24,8 @@ const AppRouter = () => {
                 <Route path='/biceps' component={BicepsPage}/>
                 <Route path='/triceps' component={TricepsPage}/>
                 <Route path='/shoulders' component={ShouldersPage}/>
+                <Route path='/back' component={BackPage} />
+                <Route path='/legs' component={LegsPage}/>
             </Switch>
         </BrowserRouter>
     )
