@@ -1,8 +1,7 @@
 import React from 'react';
-import Exercises from './Exercises'
 
 const WorkoutDashboardPage = () => (
-    <Exercises />
+    <h1>Dashboard</h1>
 )
 
 export default WorkoutDashboardPage;

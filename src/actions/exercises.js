@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 // ADD CHEST
 const addChestExercise = ({ name = '', series = 0,  reps = 0, note = '', member = 'Chest' } = {}) => ({
     type: 'ADD_CHEST_EXERCISE',
-    exercise: {
+    chest: {
         id: uuidv4(),
         name,
         series,
