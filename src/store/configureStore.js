@@ -1,11 +1,12 @@
 import { combineReducers, createStore } from 'redux';
-import exerciseReducer from '../reducers/exerciseReducer';
-import chestReducer from '../reducers/chestReducer'
+import chestReducer from '../reducers/chestReducer';
+import bicepsReducer from '../reducers/bicepsReducer';
 
 export default () => {
     const store = createStore ( 
         combineReducers({
-            chest: chestReducer
+            chest: chestReducer,
+            biceps: bicepsReducer
         }) 
     )
 

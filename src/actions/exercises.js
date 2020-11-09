@@ -16,7 +16,7 @@ const addChestExercise = ({ name = '', series = 0,  reps = 0, note = '', member 
 // ADD BICEPTS
 const addBicepsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Biceps'} = {}) => ({
     type: 'ADD_BICEPS_EXERCISE',
-    exercise: {
+    biceps: {
         id: uuidv4(),
         name,
         series,

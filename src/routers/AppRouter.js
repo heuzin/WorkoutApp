@@ -5,6 +5,7 @@ import WorkoutDashboardApp from '../components/WorkoutDashboardPage';
 import AddExercise from '../components/AddExercise';
 import editExercisePage from '../components/EditExercisePage';
 import ChestPage from '../components/ChestPage'
+import BicepsPage from '../components/BicepsPage';
 
 const AppRouter = () => {
     const title = 'Workout app'
@@ -13,9 +14,10 @@ const AppRouter = () => {
             <Header />
             <Switch>
                 <Route path='/' component={WorkoutDashboardApp} exact={true}/>
-                <Route path='/create' component={AddExercise} />
-                <Route path='/edit/:id' component={editExercisePage} />
-                <Route path='/chest' component={ChestPage} />
+                <Route path='/create' component={AddExercise}/>
+                <Route path='/edit/:id' component={editExercisePage}/>
+                <Route path='/chest' component={ChestPage}/>
+                <Route path='/biceps' component={BicepsPage}/>
             </Switch>
         </BrowserRouter>
     )

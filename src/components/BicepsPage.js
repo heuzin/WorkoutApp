@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const ChestPage = (props) => {
-    console.log(props)
+const BicepsPage = (props) => {
     return (
         <div>
-            {props.chest.map((exercise) => {
+            {props.biceps.map((exercise) => {
                 return (
                     <div>
                         <Link to={`/edit/${exercise.id}`}>
@@ -22,8 +21,8 @@ const ChestPage = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        chest: state.chest
+        biceps: state.biceps
     }
 }
 
-export default connect(mapStateToProps)(ChestPage)
+export default connect(mapStateToProps)(BicepsPage)

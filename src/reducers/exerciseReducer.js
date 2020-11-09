@@ -2,11 +2,6 @@ const exerciseReducerDefaultState = []
 
 const exerciseReducer = (state = exerciseReducerDefaultState, action) => {
     switch (action.type) {
-        case 'ADD_BICEPS_EXERCISE':
-            return [
-                ...state,
-                action.exercise
-            ]
         case 'ADD_TRICEPS_EXERCISE':
             return [
                 ...state,
