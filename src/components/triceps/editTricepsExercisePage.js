@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { editExercise } from '../../actions/exercises';
 import ExerciseForm from '../ExerciseForm';
 
-const editChestExercisePage = (props) => {
+const editTricepsExercisePage = (props) => {
     return (
         <div>
-            <ExerciseForm         
+            <ExerciseForm 
                 exercise={props.exercise}
                 onSubmit={(exercise) => {
                     props.dispatch(editExercise(props.match.params.id, exercise))
-                    props.history.push('/chest')
+                    props.history.push('/triceps')
                 }}
             />
         </div>
@@ -19,10 +19,10 @@ const editChestExercisePage = (props) => {
 
 const mapStateToProps = (state, props) => {
     return {
-        exercise: state.chest.find((exercise) => {
+        exercise: state.triceps.find((exercise) => {
             return exercise.id === props.match.params.id
         })
     }
 }
 
-export default connect(mapStateToProps)(editChestExercisePage)
+export default connect(mapStateToProps)(editTricepsExercisePage);
