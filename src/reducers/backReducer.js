@@ -7,6 +7,17 @@ const backReducer = (state = backReducerDefaultState, action) => {
                 ...state,
                 action.back
             ]
+        case 'EDIT_EXERCISE':
+            return state.map((exercise) => {
+                if (exercise.id === action.id) {
+                    return {
+                        ...exercise,
+                        ...action.updates
+                    }
+                } else {
+                    return exercise
+                }
+            })
         default:
             return state
     }
