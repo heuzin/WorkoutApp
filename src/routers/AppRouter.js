@@ -3,13 +3,14 @@ import Header from '../components/Header'
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import WorkoutDashboardApp from '../components/WorkoutDashboardPage';
 import AddExercise from '../components/AddExercise';
-import editExercisePage from '../components/EditExercisePage';
-import ChestPage from '../components/ChestPage'
-import BicepsPage from '../components/BicepsPage';
-import TricepsPage from '../components/TricepsPage';
-import ShouldersPage from '../components/ShouldersPage';
-import BackPage from '../components/BackPage'
-import LegsPage from '../components/LegsPage';
+import editChestExercisePage from '../components/chest/editChestExercisePage';
+import ChestPage from '../components/chest/ChestPage'
+import BicepsPage from '../components/biceps/BicepsPage';
+import TricepsPage from '../components/triceps/TricepsPage';
+import ShouldersPage from '../components/shoulders/ShouldersPage';
+import editBackExercisePage from '../components/back/editBackExercisePage'
+import BackPage from '../components/back/BackPage'
+import LegsPage from '../components/legs/LegsPage';
 
 const AppRouter = () => {
     const title = 'Workout app'
@@ -19,7 +20,8 @@ const AppRouter = () => {
             <Switch>
                 <Route path='/' component={WorkoutDashboardApp} exact={true}/>
                 <Route path='/create' component={AddExercise}/>
-                <Route path='/edit/:id' component={editExercisePage}/>
+                <Route path='/edit/chest/:id' component={editChestExercisePage}/>
+                <Route path='/edit/back/:id' component={editBackExercisePage}/>
                 <Route path='/chest' component={ChestPage}/>
                 <Route path='/biceps' component={BicepsPage}/>
                 <Route path='/triceps' component={TricepsPage}/>

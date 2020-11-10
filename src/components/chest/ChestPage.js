@@ -3,13 +3,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const ChestPage = (props) => {
-    console.log(props)
     return (
         <div>
             {props.chest.map((exercise) => {
                 return (
                     <div>
-                        <Link to={`/edit/${exercise.id}`}>
+                        <Link to={`/edit/chest/${exercise.id}`}>
                             <h1>{exercise.name}</h1>
                         </Link>
                         <p>{exercise.series} - {exercise.reps} - {exercise.member}</p>

@@ -8,7 +8,7 @@ const BackPage = (props) => {
             {props.back.map((exercise) => {
                 return (
                     <div>
-                        <Link to={`/edit/${exercise.id}`}>
+                        <Link to={`/edit/back/${exercise.id}`}>
                             <h1>{exercise.name}</h1>
                         </Link>
                         <p>{exercise.series} - {exercise.reps} - {exercise.member}</p>
