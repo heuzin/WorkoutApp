@@ -23,7 +23,7 @@ const EditExersicePage = (props) => {
 
 const mapStateToProps = (state, props) => {
     return {
-        exercise: state.find((exercise) => {
+        exercise: state.legs.find((exercise) => {
             return exercise.id === props.match.params.id
         })
     }
