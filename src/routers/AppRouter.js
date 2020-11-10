@@ -13,6 +13,7 @@ import editChestExercisePage from '../components/chest/editChestExercisePage';
 import editBackExercisePage from '../components/back/editBackExercisePage';
 import editBicepsExercisePage from '../components/biceps/editBicepsExercisePage';
 import editTricepsExercisePage from '../components/triceps//editTricepsExercisePage'
+import editShouldersExercisePage from '../components/shoulders/editShouldersExercisePage'
 
 const AppRouter = () => {
     const title = 'Workout app'
@@ -26,6 +27,7 @@ const AppRouter = () => {
                 <Route path='/edit/back/:id' component={editBackExercisePage}/>
                 <Route path='/edit/biceps/:id' component={editBicepsExercisePage}/>
                 <Route path='/edit/triceps/:id' component={editTricepsExercisePage}/>
+                <Route path='/edit/shoulders/:id' component={editShouldersExercisePage}/>
                 <Route path='/chest' component={ChestPage}/>
                 <Route path='/biceps' component={BicepsPage}/>
                 <Route path='/triceps' component={TricepsPage}/>
