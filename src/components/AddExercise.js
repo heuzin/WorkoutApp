@@ -15,8 +15,33 @@ class AddExercise extends React.Component {
         const member = e.target.value
         this.setState(() => ({ member }))
     }
-    onSubmit = (e) => {
-        console.log(e.target)
+    onSubmit = (exercise) => {
+        switch (this.state.member) {
+            case 'chest':
+                this.props.dispatch(addChestExercise(exercise))
+                this.props.history.push('/chest')
+                break;
+            case 'back':
+                this.props.dispatch(addBackExercise(exercise))
+                this.props.history.push('/back')
+                break;
+            case 'biceps':
+                this.props.dispatch(addBicepsExercise(exercise))
+                this.props.history.push('/biceps')
+                break;
+            case 'triceps':
+                this.props.dispatch(addTricepsExercise(exercise))
+                this.props.history.push('/triceps')
+                break;
+            case 'sholders':
+                this.props.dispatch(addShoulderExercise(exercise))
+                this.props.history.push('/shoulders')
+                break;
+            case 'legs':
+                this.props.dispatch(addLegsExercise(exercise))
+                this.props.history.push('/legs')
+                break;
+        }
     }
     render() {
         return (
@@ -31,34 +56,7 @@ class AddExercise extends React.Component {
                     <option value='legs'>Legs</option>
                 </select>
                 <ExerciseForm 
-                    onSubmit={(exercise) => {
-                        switch (this.state.member) {
-                            case 'chest':
-                                this.props.dispatch(addChestExercise(exercise))
-                                this.props.history.push('/chest')
-                                break;
-                            case 'back':
-                                this.props.dispatch(addBackExercise(exercise))
-                                this.props.history.push('/back')
-                                break;
-                            case 'biceps':
-                                this.props.dispatch(addBicepsExercise(exercise))
-                                this.props.history.push('/biceps')
-                                break;
-                            case 'triceps':
-                                this.props.dispatch(addTricepsExercise(exercise))
-                                this.props.history.push('/triceps')
-                                break;
-                            case 'sholders':
-                                this.props.dispatch(addShoulderExercise(exercise))
-                                this.props.history.push('/shoulders')
-                                break;
-                            case 'legs':
-                                this.props.dispatch(addLegsExercise(exercise))
-                                this.props.history.push('/legs')
-                                break;
-                        }
-                    }}
+                    onSubmit={this.onSubmit}
                 />
             </div>
         )
