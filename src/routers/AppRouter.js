@@ -5,6 +5,7 @@ import WorkoutDashboardApp from '../components/WorkoutDashboardPage';
 import AddExercise from '../components/AddExercise';
 import editChestExercisePage from '../components/chest/editChestExercisePage';
 import ChestPage from '../components/chest/ChestPage'
+import editBicepsExercisePage from '../components/biceps/editBicepsExercisePage'
 import BicepsPage from '../components/biceps/BicepsPage';
 import TricepsPage from '../components/triceps/TricepsPage';
 import ShouldersPage from '../components/shoulders/ShouldersPage';
@@ -22,6 +23,7 @@ const AppRouter = () => {
                 <Route path='/create' component={AddExercise}/>
                 <Route path='/edit/chest/:id' component={editChestExercisePage}/>
                 <Route path='/edit/back/:id' component={editBackExercisePage}/>
+                <Route path='/edit/biceps/:id' component={editBicepsExercisePage}/>
                 <Route path='/chest' component={ChestPage}/>
                 <Route path='/biceps' component={BicepsPage}/>
                 <Route path='/triceps' component={TricepsPage}/>
