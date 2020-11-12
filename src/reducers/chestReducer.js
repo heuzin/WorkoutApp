@@ -18,6 +18,10 @@ const chestReducer = (state = chestReducerDefaultState, action) => {
                     return exercise
                 }
             })
+        case 'REMOVE_EXERCISE':
+            return state.filter(({ id }) => {
+                return action.id !== id
+            })
         default:
             return state
     }
