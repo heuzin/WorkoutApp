@@ -12,7 +12,7 @@ const ShouldersPage = (props) => {
             props.shoulders.length > 0 ?
             props.shoulders.map((exercise) => {
                 return (
-                    <div>
+                    <div key={exercise.id}>
                         <Link to={`/edit/shoulders/${exercise.id}`}>
                             <h1>{exercise.name}</h1>
                         </Link>

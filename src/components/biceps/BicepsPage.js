@@ -12,7 +12,7 @@ const BicepsPage = (props) => {
             props.biceps.length > 0 ?
             props.biceps.map((exercise) => {
                 return (
-                    <div>
+                    <div key={exercise.id}>
                         <Link to={`/edit/biceps/${exercise.id}`}>
                             <h1>{exercise.name}</h1>
                         </Link>

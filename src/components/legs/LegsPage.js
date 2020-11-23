@@ -12,7 +12,7 @@ const LegsPage = (props) => {
             props.legs.length > 0 ?
             props.legs.map((exercise) => {
                 return (
-                    <div>
+                    <div key={exercise.id}>
                         <Link to={`/edit/legs/${exercise.id}`}>
                             <h1>{exercise.name}</h1>
                         </Link>

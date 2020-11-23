@@ -11,8 +11,8 @@ const BackPage = (props) => {
             {
             props.back.length > 0 ?      
             props.back.map((exercise) => {
-                return (
-                    <div>
+                return ( 
+                    <div key={exercise.id}>                
                         <Link to={`/edit/back/${exercise.id}`}>
                             <h1>{exercise.name}</h1>
                         </Link>

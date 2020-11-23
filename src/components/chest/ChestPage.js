@@ -12,7 +12,7 @@ const ChestPage = (props) => {
             props.chest.length > 0 ?
                 props.chest.map((exercise) => {
                 return (
-                    <div>
+                    <div key={exercise.id}>
                         <Link to={`/edit/chest/${exercise.id}`}>
                             <h1>{exercise.name}</h1>
                         </Link>
