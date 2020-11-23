@@ -1,17 +1,31 @@
 import { v4 as uuidv4 } from 'uuid';
+import database from '../firebase/firebase'
 
 // ADD CHEST
-const addChestExercise = ({ name = '', series = 0,  reps = 0, note = '', member = 'Chest' } = {}) => ({
+const addChestExercise = (chest) => ({
     type: 'ADD_CHEST_EXERCISE',
-    chest: {
-        id: uuidv4(),
-        name,
-        series,
-        reps,
-        note,
-        member
-    }
+    chest
 })
+
+export const startAddChestExercise = (chestData = {}) => {
+    return (dispatch) => {
+        const {
+            name = '', 
+            series = 0,  
+            reps = 0, 
+            note = '',
+            member = 'Chest'
+        } = chestData
+        const chest = { name, series, reps, note, member }
+
+        database.ref('chest').push(chest).then((ref) => {
+            dispatch(addChestExercise({
+                id: ref.key,
+                ...chest
+            }))
+        })
+    }
+}
 
 // ADD BICEPTS
 const addBicepsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Biceps'} = {}) => ({

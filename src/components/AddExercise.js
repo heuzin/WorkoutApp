@@ -1,7 +1,7 @@
 import React from 'react';
 import ExerciseForm from './ExerciseForm';
 import { connect } from 'react-redux';
-import { addBackExercise, addBicepsExercise, addChestExercise, addLegsExercise, addShoulderExercise, addTricepsExercise } from '../actions/exercises';
+import { addBackExercise, addBicepsExercise, startAddChestExercise, addLegsExercise, addShoulderExercise, addTricepsExercise } from '../actions/exercises';
 
 class AddExercise extends React.Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class AddExercise extends React.Component {
     onSubmit = (exercise) => {
         switch (this.state.member) {
             case 'chest':
-                this.props.dispatch(addChestExercise(exercise))
+                this.props.dispatch(startAddChestExercise(exercise))
                 this.props.history.push('/chest')
                 break;
             case 'back':

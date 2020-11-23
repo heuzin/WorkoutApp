@@ -6,7 +6,7 @@ import shouldersReducer from '../reducers/shouldersReducer';
 import backReducer from '../reducers/backReducer';
 import legsReducer from '../reducers/legsReducer';
 import filtersReducer from '../reducers/filtersReducer';
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE__ || compose;
 
