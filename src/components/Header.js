@@ -1,8 +1,12 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 
 const Header = (props) => {
     return (
-        <h1>{props.title}</h1>
+        <header>
+            <NavLink to='/' exact={true}>Home</NavLink>
+            <NavLink to='/create'>Create Workout</NavLink>
+        </header>
     );
 };
 

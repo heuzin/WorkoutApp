@@ -1,10 +1,16 @@
-const path = require('path')
-let mode = process.env.NODE_ENV || 'development';
+const path = require('path');
+const webpack = require('webpack');
+
+// process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+// if (process.env.NODE_ENV === 'development') {
+//     require('dotenv').config({ path: '.env.development' })
+// }
 
 module.exports = {
     entry: './src/app.js',
     output: {
-        path: path.join(__dirname, 'public'),
+        path: path.join(__dirname, 'public', 'dist'),
         filename: 'bundle.js'
     },
     module: {
@@ -21,13 +27,4 @@ module.exports = {
             ]
         }]
     },
-    devtool: (mode === 'development') ? 'inline-source-map' : false,
-    performance: {
-        hints: false,
-        maxEntrypointSize: 512000,
-        maxAssetSize: 512000
-    },
-    devServer: {
-        contentBase: path.join(__dirname, 'public')
-    }
-};
+}
