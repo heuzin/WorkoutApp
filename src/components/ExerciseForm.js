@@ -1,13 +1,13 @@
 import React from 'react';
 
 class ExerciseForm extends React.Component {
-    constructor({ exercise }) {
-        super(exercise)
+    constructor(props) {
+        super()
         this.state = {
-            name: exercise ? exercise.name : '',
-            series: exercise ? exercise.series : '',
-            reps: exercise ? exercise.reps : '',
-            notes: exercise ? exercise.notes : '',
+            name: props.exercise ? props.exercise.name : '',
+            series: props.exercise ? props.exercise.series : '',
+            reps: props.exercise ? props.exercise.reps : '',
+            notes: props.exercise ? props.exercise.notes : '',
             error: ''
         }
     }
