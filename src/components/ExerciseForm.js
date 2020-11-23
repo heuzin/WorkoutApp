@@ -7,7 +7,8 @@ class ExerciseForm extends React.Component {
             name: exercise ? exercise.name : '',
             series: exercise ? exercise.series : '',
             reps: exercise ? exercise.reps : '',
-            notes: exercise ? exercise.notes : ''
+            notes: exercise ? exercise.notes : '',
+            error: ''
         }
     }
     onNameChange = (e) => {
@@ -16,11 +17,15 @@ class ExerciseForm extends React.Component {
     }
     onSeriesChange = (e) => {
         const series = e.target.value
-        this.setState(() => ({ series }))
+        if (!series || series.match(/^\d{1,2}$/)) {
+            this.setState(() => ({ series }))
+        }
     }
     onRepsChange = (e) => {
         const reps = e.target.value
-        this.setState(() => ({ reps }))
+        if (!reps || reps.match(/^\d{1,2}$/)) {
+            this.setState(() => ({ reps }))
+        }
     }
     onNotesChange = (e) => {
         const notes = e.target.value
@@ -29,16 +34,22 @@ class ExerciseForm extends React.Component {
     onSubmit = (e) => {
         e.preventDefault()
        
-        this.props.onSubmit({
-            name: this.state.name,
-            series: this.state.series,
-            reps: this.state.reps,
-            notes: this.state.notes
-        })
+        if (!this.state.name || !this.state.series || !this.state.reps) {
+            this.setState(() => ({ error: 'Please provide a name, number of series and reps.'}))
+        } else {
+            this.setState(() => ({ error: '' }))
+            this.props.onSubmit({
+                name: this.state.name,
+                series: this.state.series,
+                reps: this.state.reps,
+                notes: this.state.notes
+            })
+        }
     }
     render() {
         return (
             <div>
+                {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
                     <input 
                         type='text' 
@@ -47,13 +58,13 @@ class ExerciseForm extends React.Component {
                         placeholder='Name'
                     />
                     <input 
-                        type='number' 
+                        type='text'
                         value={this.state.series}
                         onChange={this.onSeriesChange} 
                         placeholder='Series'
                     />
                     <input 
-                        type='number' 
+                        type='text' 
                         value={this.state.reps}
                         onChange={this.onRepsChange} 
                         placeholder='Reps'

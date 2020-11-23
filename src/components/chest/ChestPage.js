@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ExerciseFilters from '../ExerciseFilters';
+import getVisibleExercises from '../selectors/exercise'
 
 const ChestPage = (props) => {
     return (
         <div>
-            {props.chest.map((exercise) => {
+            <ExerciseFilters />
+            {
+            props.chest.length > 0 ?
+                props.chest.map((exercise) => {
                 return (
                     <div>
                         <Link to={`/edit/chest/${exercise.id}`}>
@@ -14,14 +19,16 @@ const ChestPage = (props) => {
                         <p>{exercise.series} - {exercise.reps} - {exercise.member}</p>
                     </div>
                 )
-            })}
+            }) : 
+            <p>Add a chest exercise to show here</p>
+        }
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        chest: state.chest
+        chest: getVisibleExercises(state.chest, state.filters)
     }
 }
 

@@ -3,8 +3,9 @@ import chestReducer from '../reducers/chestReducer';
 import bicepsReducer from '../reducers/bicepsReducer';
 import tricepsReducer from '../reducers/tricepsReducer';
 import shouldersReducer from '../reducers/shouldersReducer';
-import backReducer from '../reducers/backReducer'
+import backReducer from '../reducers/backReducer';
 import legsReducer from '../reducers/legsReducer';
+import filtersReducer from '../reducers/filtersReducer';
 
 export default () => {
     const store = createStore ( 
@@ -14,7 +15,8 @@ export default () => {
             triceps: tricepsReducer,
             shoulders: shouldersReducer,
             back: backReducer,
-            legs: legsReducer
+            legs: legsReducer,
+            filters: filtersReducer
         }) 
     )
 

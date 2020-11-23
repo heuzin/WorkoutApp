@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ExerciseFilters from '../ExerciseFilters';
+import getVisibleExercises from '../selectors/exercise';
 
 const TricepsPage = (props) => {
     return (
         <div>
-        {props.triceps.map((exercise) => {
+        <ExerciseFilters />
+        {
+        props.triceps.length > 0 ?
+        props.triceps.map((exercise) => {
             return (
                 <div>
                     <Link to={`/edit/triceps/${exercise.id}`}>
@@ -14,14 +19,16 @@ const TricepsPage = (props) => {
                     <p>{exercise.series} - {exercise.reps} - {exercise.member}</p>
                 </div>
             )
-        })}
+        }) : 
+        <p>Add a triceps exercise to show here</p>
+        }
         </div>
     )
 }
 
 const mapStatetoProps = (state) => {
     return {
-        triceps: state.triceps
+        triceps: getVisibleExercises(state.triceps, state.filters)
     }
 }
 

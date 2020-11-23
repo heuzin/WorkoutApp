@@ -1,11 +1,16 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import ExerciseFilters from '../ExerciseFilters';
+import getVisibleExercises from '../selectors/exercise';
 
 const ShouldersPage = (props) => {
     return (
         <div>
-            {props.shoulders.map((exercise) => {
+            <ExerciseFilters />
+            {
+            props.shoulders.length > 0 ?
+            props.shoulders.map((exercise) => {
                 return (
                     <div>
                         <Link to={`/edit/shoulders/${exercise.id}`}>
@@ -14,14 +19,16 @@ const ShouldersPage = (props) => {
                         <p>{exercise.series} - {exercise.reps} - {exercise.member}</p>
                     </div>
                 )
-            })}
+            }) :
+            <p>Add a shoulders exercise to show here</p>
+            }
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        shoulders: state.shoulders
+        shoulders: getVisibleExercises(state.shoulders, state.filters)
     }
 }
 
