@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editExercise, startRemoveBackExercise } from '../../actions/exercises';
+import { startEditBackExercise, startRemoveBackExercise } from '../../actions/exercises';
 import ExerciseForm from '../ExerciseForm'
 
 const editBackExercisePage = (props) => {
@@ -9,7 +9,7 @@ const editBackExercisePage = (props) => {
             <ExerciseForm 
                 exercise={props.exercise}
                 onSubmit={(exercise) => {
-                    props.dispatch(editExercise(props.match.params.id, exercise))
+                    props.dispatch(startEditBackExercise(props.match.params.id, exercise))
                     props.history.push('/back')
                 }}
             />

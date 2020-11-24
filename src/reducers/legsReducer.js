@@ -7,7 +7,7 @@ const legsReducer = (state = legsReducerDefaultState, action) => {
                 ...state,
                 action.legs
             ]
-        case 'EDIT_EXERCISE':
+        case 'EDIT_LEGS_EXERCISE':
             return state.map((exercise) => {
                 if (exercise.id === action.id) {
                     return {

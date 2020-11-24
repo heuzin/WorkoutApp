@@ -7,7 +7,7 @@ const tricepsReducer = (state = tricepsReducerDefaultState, action) => {
                 ...state,
                 action.triceps
             ]
-        case 'EDIT_EXERCISE':
+        case 'EDIT_TRICEPS_EXERCISE':
             return state.map((exercise) => {
                 if (exercise.id === action.id) {
                     return {

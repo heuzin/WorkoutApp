@@ -7,7 +7,7 @@ const chestReducer = (state = chestReducerDefaultState, action) => {
                 ...state,
                 action.chest
             ]
-        case 'EDIT_EXERCISE':
+        case 'EDIT_CHEST_EXERCISE':
             return state.map((exercise) => {
                 if (exercise.id === action.id) {
                     return {

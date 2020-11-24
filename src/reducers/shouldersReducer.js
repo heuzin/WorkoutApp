@@ -7,7 +7,7 @@ const shouldersReducer = (state = shouldersReducerDefaultState, action) => {
                 ...state,
                 action.shoulders
             ]
-        case 'EDIT_EXERCISE':
+        case 'EDIT_SHOULDERS_EXERCISE':
             return state.map((exercise) => {
                 if (exercise.id === action.id) {
                     return {

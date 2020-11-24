@@ -7,7 +7,7 @@ const backReducer = (state = backReducerDefaultState, action) => {
                 ...state,
                 action.back
             ]
-        case 'EDIT_EXERCISE':
+        case 'EDIT_BACK_EXERCISE':
             return state.map((exercise) => {
                 if (exercise.id === action.id) {
                     return {
