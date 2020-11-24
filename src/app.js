@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from '../src/routers/AppRouter'
 import configureStore from './store/configureStore'
-import { addChestExercise, addBicepsExercise, addTricepsExercise, addShoulderExercise, addBackExercise, addLegsExercise, removeExercise, editExercise } from './actions/exercises'
+import { addChestExercise, addBicepsExercise, addTricepsExercise, addShoulderExercise, addBackExercise, addLegsExercise, removeExercise, editExercise, startSetExercises } from './actions/exercises'
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import './firebase/firebase'
@@ -38,4 +38,8 @@ const jsx = (
 // store.dispatch(editExercise( id02, { series: 20 } ))
 
 let appRoot = document.getElementById('app');
-ReactDOM.render(jsx, appRoot);
+ReactDOM.render(<p>Loading...</p>, appRoot);
+
+store.dispatch(startSetExercises()).then(() => {
+    ReactDOM.render(jsx, appRoot);
+})

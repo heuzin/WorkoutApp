@@ -18,7 +18,7 @@ export const startAddChestExercise = (chestData = {}) => {
         } = chestData
         const chest = { name, series, reps, note, member }
 
-        database.ref('chest').push(chest).then((ref) => {
+        database.ref('exercise/chest').push(chest).then((ref) => {
             dispatch(addChestExercise({
                 id: ref.key,
                 ...chest
@@ -44,7 +44,7 @@ export const startAddBicepsExercise = (bicepsData = {}) => {
         } = bicepsData
         const biceps = { name, series, reps, note, member }
 
-        database.ref('biceps').push(biceps).then((ref) => {
+        database.ref('exercise/biceps').push(biceps).then((ref) => {
             dispatch(addBicepsExercise({
                 id: ref.key,
                 ...biceps
@@ -70,7 +70,7 @@ export const startAddTricepsExercise = (tricepsData = {}) => {
         } = tricepsData
         const triceps = { name, series, reps, note, member }
 
-        database.ref('triceps').push(triceps).then((ref) => {
+        database.ref('exercise/triceps').push(triceps).then((ref) => {
             dispatch(addTricepsExercise({
                 id: ref.key,
                 ...triceps
@@ -96,7 +96,7 @@ export const startAddShouldersExercise = (shouldersData = {}) => {
         } = shouldersData
         const shoulders = { name, series, reps, note, member }
 
-        database.ref('shoulders').push(shoulders).then((ref) => {
+        database.ref('exercise/shoulders').push(shoulders).then((ref) => {
             dispatch(addShoulderExercise({
                 id: ref.key,
                 ...shoulders
@@ -122,7 +122,7 @@ export const startAddLegsExercise = (legsData = {}) => {
         } = legsData
         const legs = { name, series, reps, note, member }
 
-        database.ref('legs').push(legs).then((ref) => {
+        database.ref('exercise/legs').push(legs).then((ref) => {
             dispatch(addLegsExercise({
                 id: ref.key,
                 ...legs
@@ -147,7 +147,7 @@ export const startAddBackExercise = (backData = {}) => {
         } = backData
         const back = { name, series, reps, note, member}
 
-        database.ref('back').push(back).then((ref) => {
+        database.ref('exercise/back').push(back).then((ref) => {
             dispatch(addBackExercise({
                 id: ref.key,
                 ...back
@@ -164,7 +164,7 @@ const removeExercise = ({ id } = {}) => ({
 
 export const startRemoveChestExercise = ({id} = {}) => {
     return (dispatch) => {
-        return database.ref(`chest/${id}`).remove().then(() => {
+        return database.ref(`exercise/chest/${id}`).remove().then(() => {
             dispatch(removeExercise({ id }))
         })
     }
@@ -172,7 +172,7 @@ export const startRemoveChestExercise = ({id} = {}) => {
 
 export const startRemoveBicepsExercise = ({id} = {}) => {
     return (dispatch) => {
-        return database.ref(`biceps/${id}`).remove().then(() => {
+        return database.ref(`exercise/biceps/${id}`).remove().then(() => {
             dispatch(removeExercise({ id }))
         })
     }
@@ -180,7 +180,7 @@ export const startRemoveBicepsExercise = ({id} = {}) => {
 
 export const startRemoveTricepsExercise = ({id} = {}) => {
     return (dispatch) => {
-        return database.ref(`triceps/${id}`).remove().then(() => {
+        return database.ref(`exercise/triceps/${id}`).remove().then(() => {
             dispatch(removeExercise({ id }))
         })
     }
@@ -188,7 +188,7 @@ export const startRemoveTricepsExercise = ({id} = {}) => {
 
 export const startRemoveShouldersExercise = ({id} = {}) => {
     return (dispatch) => {
-        return database.ref(`shoulders/${id}`).remove().then(() => {
+        return database.ref(`exercise/shoulders/${id}`).remove().then(() => {
             dispatch(removeExercise({ id }))
         })
     }
@@ -196,7 +196,7 @@ export const startRemoveShouldersExercise = ({id} = {}) => {
 
 export const startRemoveLegsExercise = ({id} = {}) => {
     return (dispatch) => {
-        return database.ref(`legs/${id}`).remove().then(() => {
+        return database.ref(`exercise/legs/${id}`).remove().then(() => {
             dispatch(removeExercise({ id }))
         })
     }
@@ -204,7 +204,7 @@ export const startRemoveLegsExercise = ({id} = {}) => {
 
 export const startRemoveBackExercise = ({id} = {}) => {
     return (dispatch) => {
-        return database.ref(`back/${id}`).remove().then(() => {
+        return database.ref(`exercise/back/${id}`).remove().then(() => {
             dispatch(removeExercise({ id }))
         })
     }
@@ -217,4 +217,138 @@ const editExercise = (id, updates) => ({
     updates
 })
 
-export { addChestExercise, addBicepsExercise, addTricepsExercise, addShoulderExercise, addLegsExercise, addBackExercise, removeExercise, editExercise }
+// SET_EXERCISES
+const setChestExercise = (chest) => ({
+    type: 'SET_CHEST_EXERCISES',
+    chest
+})
+
+const setBicepsExercise = (biceps) => ({
+    type: 'SET_BICEPS_EXERCISES',
+    biceps
+})
+
+const setBackExercise = (back) => ({
+    type: 'SET_BACK_EXERCISES',
+    back
+})
+
+const setLegsExercise = (legs) => ({
+    type: 'SET_LEGS_EXERCISES',
+    legs
+})
+
+const setShouldersExercise = (shoulders) => ({
+    type: 'SET_SHOULDERS_EXERCISES',
+    shoulders
+})
+
+const setTricepsExercise = (triceps) => ({
+    type: 'SET_TRICEPS_EXERCISES',
+    triceps
+})
+
+export const startSetExercises = () => {
+    return (dispatch) => {
+        const chestFirebase = database.ref('exercise/chest')
+            .once('value')
+            .then((snapshot) => {
+                const chest = [];
+    
+                snapshot.forEach((childSnapshot) => {
+                    chest.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    })
+                })
+                
+                dispatch(setChestExercise(chest))
+            })
+
+        const bicepsFirebase = database.ref('exercise/biceps')
+            .once('value')
+            .then((snapshot) => {
+                const biceps = [];
+
+                snapshot.forEach((childSnapshot) => {
+                    biceps.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    })
+                })
+                
+                dispatch(setBicepsExercise(biceps))
+            })
+
+        const backFirebase = database.ref('exercise/back')
+            .once('value')
+            .then((snapshot) => {
+                const back = []
+
+                snapshot.forEach((childSnapshot) => {
+                    back.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    })
+                })
+
+                dispatch(setBackExercise(back))
+            })
+
+        const legsFirebase = database.ref('exercise/legs')
+            .once('value')
+            .then((snapshot) => {
+                const legs = []
+
+                snapshot.forEach((childSnapshot) => {
+                    legs.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    })
+                })
+                dispatch(setLegsExercise(legs))
+            })
+
+        const shouldersFirebase = database.ref('exercise/shoulders')
+            .once('value')
+            .then((snapshot) => {
+                const shoulders = []
+
+                snapshot.forEach((childSnapshot) => {
+                    shoulders.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    })
+                })
+                dispatch(setShouldersExercise(shoulders))
+            })
+        
+        const tricepsFirebase = database.ref('exercise/triceps')
+            .once('value')
+            .then((snapshot) => {
+                const triceps = []
+
+                snapshot.forEach((childSnapshot) => {
+                    triceps.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val()
+                    })
+                })
+                dispatch(setTricepsExercise(triceps))
+            })
+
+        return chestFirebase, bicepsFirebase, backFirebase, legsFirebase, shouldersFirebase, tricepsFirebase
+    }
+    
+};
+
+export { 
+    addChestExercise, 
+    addBicepsExercise, 
+    addTricepsExercise, 
+    addShoulderExercise, 
+    addLegsExercise, 
+    addBackExercise, 
+    removeExercise, 
+    editExercise,
+}

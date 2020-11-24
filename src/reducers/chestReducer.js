@@ -22,6 +22,8 @@ const chestReducer = (state = chestReducerDefaultState, action) => {
             return state.filter(({ id }) => {
                 return action.id !== id
             })
+        case 'SET_CHEST_EXERCISES':
+            return action.chest
         default:
             return state
     }

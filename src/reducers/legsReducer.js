@@ -22,6 +22,8 @@ const legsReducer = (state = legsReducerDefaultState, action) => {
             return state.filter(({ id }) => {
                 return action.id !== id
             })
+        case 'SET_LEGS_EXERCISES':
+            return action.legs
         default:
             return state
     }

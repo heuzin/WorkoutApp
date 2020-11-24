@@ -22,6 +22,8 @@ const tricepsReducer = (state = tricepsReducerDefaultState, action) => {
             return state.filter(({ id }) => {
                 return action.id !== id
             })
+        case 'SET_TRICEPS_EXERCISES':
+            return action.triceps
         default:
             return state
     }

@@ -22,6 +22,8 @@ const shouldersReducer = (state = shouldersReducerDefaultState, action) => {
             return state.filter(({ id }) => {
                 return action.id !== id
             })
+        case 'SET_SHOULDERS_EXERCISES':
+            return action.shoulders
         default:
             return state
     }    

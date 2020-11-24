@@ -22,6 +22,8 @@ const bicepsReducer = (state = bicepsReducerDefaultState, action) => {
             return state.filter(({ id }) => {
                 return action.id !== id
             })
+        case 'SET_BICEPS_EXERCISES':
+            return action.biceps            
         default:
             return state
     }

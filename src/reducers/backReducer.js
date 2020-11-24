@@ -22,6 +22,8 @@ const backReducer = (state = backReducerDefaultState, action) => {
             return state.filter(({ id }) => {
                 return action.id !== id
             })
+        case 'SET_BACK_EXERCISES':
+            return action.back
         default:
             return state
     }
