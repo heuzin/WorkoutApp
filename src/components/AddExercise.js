@@ -1,7 +1,7 @@
 import React from 'react';
 import ExerciseForm from './ExerciseForm';
 import { connect } from 'react-redux';
-import { addBackExercise, addBicepsExercise, startAddChestExercise, addLegsExercise, addShoulderExercise, addTricepsExercise } from '../actions/exercises';
+import { startAddBackExercise, startAddBicepsExercise, startAddChestExercise, startAddLegsExercise, startAddShouldersExercise, startAddTricepsExercise } from '../actions/exercises';
 
 class AddExercise extends React.Component {
     constructor(props) {
@@ -22,23 +22,23 @@ class AddExercise extends React.Component {
                 this.props.history.push('/chest')
                 break;
             case 'back':
-                this.props.dispatch(addBackExercise(exercise))
+                this.props.dispatch(startAddBackExercise(exercise))
                 this.props.history.push('/back')
                 break;
             case 'biceps':
-                this.props.dispatch(addBicepsExercise(exercise))
+                this.props.dispatch(startAddBicepsExercise(exercise))
                 this.props.history.push('/biceps')
                 break;
             case 'triceps':
-                this.props.dispatch(addTricepsExercise(exercise))
+                this.props.dispatch(startAddTricepsExercise(exercise))
                 this.props.history.push('/triceps')
                 break;
             case 'sholders':
-                this.props.dispatch(addShoulderExercise(exercise))
+                this.props.dispatch(startAddShouldersExercise(exercise))
                 this.props.history.push('/shoulders')
                 break;
             case 'legs':
-                this.props.dispatch(addLegsExercise(exercise))
+                this.props.dispatch(startAddLegsExercise(exercise))
                 this.props.history.push('/legs')
                 break;
         }

@@ -28,74 +28,187 @@ export const startAddChestExercise = (chestData = {}) => {
 }
 
 // ADD BICEPTS
-const addBicepsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Biceps'} = {}) => ({
+const addBicepsExercise = (biceps = {}) => ({
     type: 'ADD_BICEPS_EXERCISE',
-    biceps: {
-        id: uuidv4(),
-        name,
-        series,
-        reps,
-        note,
-        member
-    }
+    biceps
 })
+
+export const startAddBicepsExercise = (bicepsData = {}) => {
+    return (dispatch) => {
+        const {
+            name = '',
+            series = 0,
+            reps = 0,
+            note = '',
+            member = 'Biceps'
+        } = bicepsData
+        const biceps = { name, series, reps, note, member }
+
+        database.ref('biceps').push(biceps).then((ref) => {
+            dispatch(addBicepsExercise({
+                id: ref.key,
+                ...biceps
+            }))
+        })
+    }
+}
 
 // ADD TRICEPS
-const addTricepsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Triceps'} = {}) => ({
+const addTricepsExercise = (triceps = {}) => ({
     type: 'ADD_TRICEPS_EXERCISE',
-    triceps: {
-        id: uuidv4(),
-        name,
-        series,
-        reps,
-        note,
-        member
-    }
+    triceps
 })
+
+export const startAddTricepsExercise = (tricepsData = {}) => {
+    return (dispatch) => {
+        const {
+            name = '',
+            series = 0,
+            reps = 0,
+            note = '',
+            member = 'Triceps'
+        } = tricepsData
+        const triceps = { name, series, reps, note, member }
+
+        database.ref('triceps').push(triceps).then((ref) => {
+            dispatch(addTricepsExercise({
+                id: ref.key,
+                ...triceps
+            }))
+        })
+    }
+}
 
 // ADD SHOULDER
-const addShoulderExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Shoulder'} = {}) => ({
+const addShoulderExercise = (shoulders = {}) => ({
     type: 'ADD_SHOULDER_EXERCISE',
-    shoulders: {
-        id: uuidv4(),
-        name,
-        series,
-        reps,
-        note,
-        member
-    }
+    shoulders
 })
+
+export const startAddShouldersExercise = (shouldersData = {}) => {
+    return (dispatch) => {
+        const {
+            name = '',
+            series = 0,
+            reps = 0,
+            note = '',
+            member = 'Shoulder'
+        } = shouldersData
+        const shoulders = { name, series, reps, note, member }
+
+        database.ref('shoulders').push(shoulders).then((ref) => {
+            dispatch(addShoulderExercise({
+                id: ref.key,
+                ...shoulders
+            }))
+        })
+    }
+}
 
 // ADD LEGS
-const addLegsExercise = ({ name = '', series = 0, reps = 0, note = '', member = 'Legs'} = {}) => ({
+const addLegsExercise = (legs = {}) => ({
     type: 'ADD_LEGS_EXERCISE',
-    legs: {
-        id: uuidv4(),
-        name,
-        series,
-        reps,
-        note,
-        member
-    }
+    legs
 })
 
-const addBackExercise = ({ name='', series = 0, reps = 0, note = '', member = 'back'} ={}) => ({
-    type: 'ADD_BACK_EXERCISE',
-    back: {
-        id: uuidv4(),
-        name,
-        series,
-        reps,
-        note,
-        member
+export const startAddLegsExercise = (legsData = {}) => {
+    return (dispatch) => {
+        const {
+            name = '',
+            series = 0,
+            reps = 0,
+            note = '',
+            member = 'Legs'
+        } = legsData
+        const legs = { name, series, reps, note, member }
+
+        database.ref('legs').push(legs).then((ref) => {
+            dispatch(addLegsExercise({
+                id: ref.key,
+                ...legs
+            }))
+        })
     }
+}
+
+const addBackExercise = (back ={}) => ({
+    type: 'ADD_BACK_EXERCISE',
+    back
 })
+
+export const startAddBackExercise = (backData = {}) => {
+    return (dispatch) => {
+        const {
+            name = '',
+            series = 0,
+            reps = 0,
+            note = '',
+            member = 'back'
+        } = backData
+        const back = { name, series, reps, note, member}
+
+        database.ref('back').push(back).then((ref) => {
+            dispatch(addBackExercise({
+                id: ref.key,
+                ...back
+            }))
+        })
+    }
+}
 
 // REMOVE EXERCISE
 const removeExercise = ({ id } = {}) => ({
     type: 'REMOVE_EXERCISE',
     id
 })
+
+export const startRemoveChestExercise = ({id} = {}) => {
+    return (dispatch) => {
+        return database.ref(`chest/${id}`).remove().then(() => {
+            dispatch(removeExercise({ id }))
+        })
+    }
+}
+
+export const startRemoveBicepsExercise = ({id} = {}) => {
+    return (dispatch) => {
+        return database.ref(`biceps/${id}`).remove().then(() => {
+            dispatch(removeExercise({ id }))
+        })
+    }
+}
+
+export const startRemoveTricepsExercise = ({id} = {}) => {
+    return (dispatch) => {
+        return database.ref(`triceps/${id}`).remove().then(() => {
+            dispatch(removeExercise({ id }))
+        })
+    }
+}
+
+export const startRemoveShouldersExercise = ({id} = {}) => {
+    return (dispatch) => {
+        return database.ref(`shoulders/${id}`).remove().then(() => {
+            dispatch(removeExercise({ id }))
+        })
+    }
+}
+
+export const startRemoveLegsExercise = ({id} = {}) => {
+    return (dispatch) => {
+        return database.ref(`legs/${id}`).remove().then(() => {
+            dispatch(removeExercise({ id }))
+        })
+    }
+}
+
+export const startRemoveBackExercise = ({id} = {}) => {
+    return (dispatch) => {
+        return database.ref(`back/${id}`).remove().then(() => {
+            dispatch(removeExercise({ id }))
+        })
+    }
+}
 
 // EDIT EXERCISE
 const editExercise = (id, updates) => ({

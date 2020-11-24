@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { editExercise, removeExercise } from '../../actions/exercises';
+import { editExercise, startRemoveShouldersExercise } from '../../actions/exercises';
 import ExerciseForm from '../ExerciseForm';
 
 const editShouldersExercisePage = (props) => {
@@ -14,7 +14,7 @@ const editShouldersExercisePage = (props) => {
                 }}
             />
             <button onClick={() => {
-                props.dispatch(removeExercise({ id: props.match.params.id }))
+                props.dispatch(startRemoveShouldersExercise({ id: props.match.params.id }))
                 props.history.push('/shoulders')
             }}>Delete</button>
         </div>
