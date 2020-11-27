@@ -9,7 +9,7 @@ import filtersReducer from '../reducers/filtersReducer';
 import thunk from 'redux-thunk';
 import authReducer from '../reducers/auth';
 
-const composeEnhancers = __REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancers = __REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default () => {
     const store = createStore ( 
@@ -23,7 +23,7 @@ export default () => {
             filters: filtersReducer,
             auth: authReducer
         }), 
-        composeEnhancers(applyMiddleware(thunk))
+        applyMiddleware(thunk)
     )
 
     return store
