@@ -8,7 +8,8 @@ const addChestExercise = (chest) => ({
 })
 
 export const startAddChestExercise = (chestData = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
         const {
             name = '', 
             series = 0,  
@@ -18,7 +19,7 @@ export const startAddChestExercise = (chestData = {}) => {
         } = chestData
         const chest = { name, series, reps, notes, member }
 
-        database.ref('exercise/chest').push(chest).then((ref) => {
+        database.ref(`users/${uid}/exercise/chest`).push(chest).then((ref) => {
             dispatch(addChestExercise({
                 id: ref.key,
                 ...chest
@@ -34,7 +35,8 @@ const addBicepsExercise = (biceps = {}) => ({
 })
 
 export const startAddBicepsExercise = (bicepsData = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
         const {
             name = '',
             series = 0,
@@ -44,7 +46,7 @@ export const startAddBicepsExercise = (bicepsData = {}) => {
         } = bicepsData
         const biceps = { name, series, reps, notes, member }
 
-        database.ref('exercise/biceps').push(biceps).then((ref) => {
+        database.ref(`users/${uid}/exercise/biceps`).push(biceps).then((ref) => {
             dispatch(addBicepsExercise({
                 id: ref.key,
                 ...biceps
@@ -60,7 +62,8 @@ const addTricepsExercise = (triceps = {}) => ({
 })
 
 export const startAddTricepsExercise = (tricepsData = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
         const {
             name = '',
             series = 0,
@@ -70,7 +73,7 @@ export const startAddTricepsExercise = (tricepsData = {}) => {
         } = tricepsData
         const triceps = { name, series, reps, notes, member }
 
-        database.ref('exercise/triceps').push(triceps).then((ref) => {
+        database.ref(`users/${uid}/exercise/triceps`).push(triceps).then((ref) => {
             dispatch(addTricepsExercise({
                 id: ref.key,
                 ...triceps
@@ -86,7 +89,8 @@ const addShoulderExercise = (shoulders = {}) => ({
 })
 
 export const startAddShouldersExercise = (shouldersData = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
         const {
             name = '',
             series = 0,
@@ -96,7 +100,7 @@ export const startAddShouldersExercise = (shouldersData = {}) => {
         } = shouldersData
         const shoulders = { name, series, reps, notes, member }
 
-        database.ref('exercise/shoulders').push(shoulders).then((ref) => {
+        database.ref(`users/${uid}/exercise/shoulders`).push(shoulders).then((ref) => {
             dispatch(addShoulderExercise({
                 id: ref.key,
                 ...shoulders
@@ -112,7 +116,8 @@ const addLegsExercise = (legs = {}) => ({
 })
 
 export const startAddLegsExercise = (legsData = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
         const {
             name = '',
             series = 0,
@@ -122,7 +127,7 @@ export const startAddLegsExercise = (legsData = {}) => {
         } = legsData
         const legs = { name, series, reps, notes, member }
 
-        database.ref('exercise/legs').push(legs).then((ref) => {
+        database.ref(`users/${uid}/exercise/legs`).push(legs).then((ref) => {
             dispatch(addLegsExercise({
                 id: ref.key,
                 ...legs
@@ -137,7 +142,8 @@ const addBackExercise = (back ={}) => ({
 })
 
 export const startAddBackExercise = (backData = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
         const {
             name = '',
             series = 0,
@@ -147,7 +153,7 @@ export const startAddBackExercise = (backData = {}) => {
         } = backData
         const back = { name, series, reps, notes, member}
 
-        database.ref('exercise/back').push(back).then((ref) => {
+        database.ref(`users/${uid}/exercise/back`).push(back).then((ref) => {
             dispatch(addBackExercise({
                 id: ref.key,
                 ...back
@@ -163,48 +169,54 @@ const removeExercise = ({ id } = {}) => ({
 })
 
 export const startRemoveChestExercise = ({id} = {}) => {
-    return (dispatch) => {
-        return database.ref(`exercise/chest/${id}`).remove().then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/exercise/chest/${id}`).remove().then(() => {
             dispatch(removeExercise({ id }))
         })
     }
 }
 
 export const startRemoveBicepsExercise = ({id} = {}) => {
-    return (dispatch) => {
-        return database.ref(`exercise/biceps/${id}`).remove().then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/exercise/biceps/${id}`).remove().then(() => {
             dispatch(removeExercise({ id }))
         })
     }
 }
 
 export const startRemoveTricepsExercise = ({id} = {}) => {
-    return (dispatch) => {
-        return database.ref(`exercise/triceps/${id}`).remove().then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/exercise/triceps/${id}`).remove().then(() => {
             dispatch(removeExercise({ id }))
         })
     }
 }
 
 export const startRemoveShouldersExercise = ({id} = {}) => {
-    return (dispatch) => {
-        return database.ref(`exercise/shoulders/${id}`).remove().then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/exercise/shoulders/${id}`).remove().then(() => {
             dispatch(removeExercise({ id }))
         })
     }
 }
 
 export const startRemoveLegsExercise = ({id} = {}) => {
-    return (dispatch) => {
-        return database.ref(`exercise/legs/${id}`).remove().then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/exercise/legs/${id}`).remove().then(() => {
             dispatch(removeExercise({ id }))
         })
     }
 }
 
 export const startRemoveBackExercise = ({id} = {}) => {
-    return (dispatch) => {
-        return database.ref(`exercise/back/${id}`).remove().then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/exercise/back/${id}`).remove().then(() => {
             dispatch(removeExercise({ id }))
         })
     }
@@ -218,8 +230,9 @@ const editChestExercise = (id, updates) => ({
 })
 
 export const startEditChestExercise = (id, updates) => {
-    return (dispatch) => {
-        return database.ref(`exercise/chest/${id}`).update(updates).then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/exercise/chest/${id}`).update(updates).then(() => {
             dispatch(editChestExercise(id, updates))
         })
     }
@@ -232,8 +245,9 @@ const editBackExercise = (id, updates) => ({
 })
 
 export const startEditBackExercise = (id, updates) => {
-    return (dispatch) => {
-        return database.ref(`exercise/back/${id}`).update(updates).then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/exercise/back/${id}`).update(updates).then(() => {
             dispatch(editBackExercise(id, updates))
         })
     }
@@ -246,8 +260,9 @@ const editBicepsExercise = (id, updates) => ({
 })
 
 export const startEditBicepsExercise = (id, updates) => {
-    return (dispatch) => {
-        return database.ref(`exercise/biceps/${id}`).update(updates).then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/exercise/biceps/${id}`).update(updates).then(() => {
             dispatch(editBicepsExercise(id, updates))
         })
     }
@@ -260,8 +275,9 @@ const editLegsExercise = (id, updates) => ({
 })
 
 export const startEditLegsExercise = (id, updates) => {
-    return (dispatch) => {
-        return database.ref(`exercise/legs/${id}`).update(updates).then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/exercise/legs/${id}`).update(updates).then(() => {
             dispatch(editLegsExercise(id, updates))
         })
     }
@@ -274,8 +290,9 @@ const editShouldersExercise = (id, updates) => ({
 })
 
 export const startEditShouldersExercise = (id, updates) => {
-    return (dispatch) => {
-        return database.ref(`exercise/shoulders/${id}`).update(updates).then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/exercise/shoulders/${id}`).update(updates).then(() => {
             dispatch(editShouldersExercise(id, updates))
         })
     }
@@ -288,8 +305,9 @@ const editTricepsExercise = (id, updates) => ({
 })
 
 export const startEditTricepsExercise = (id, updates) => {
-    return (dispatch) => {
-        return database.ref(`exercise/triceps/${id}`).update(updates).then(() => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        return database.ref(`users/${uid}/exercise/triceps/${id}`).update(updates).then(() => {
             dispatch(editTricepsExercise(id, updates))
         })
     }
@@ -327,8 +345,9 @@ const setTricepsExercise = (triceps) => ({
 })
 
 export const startSetExercises = () => {
-    return (dispatch) => {
-        const chestFirebase = database.ref('exercise/chest')
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid
+        const chestFirebase = database.ref(`users/${uid}/exercise/chest`)
             .once('value')
             .then((snapshot) => {
                 const chest = [];
@@ -343,7 +362,7 @@ export const startSetExercises = () => {
                 dispatch(setChestExercise(chest))
             })
 
-        const bicepsFirebase = database.ref('exercise/biceps')
+        const bicepsFirebase = database.ref(`users/${uid}/exercise/biceps`)
             .once('value')
             .then((snapshot) => {
                 const biceps = [];
@@ -358,7 +377,7 @@ export const startSetExercises = () => {
                 dispatch(setBicepsExercise(biceps))
             })
 
-        const backFirebase = database.ref('exercise/back')
+        const backFirebase = database.ref(`users/${uid}/exercise/back`)
             .once('value')
             .then((snapshot) => {
                 const back = []
@@ -373,7 +392,7 @@ export const startSetExercises = () => {
                 dispatch(setBackExercise(back))
             })
 
-        const legsFirebase = database.ref('exercise/legs')
+        const legsFirebase = database.ref(`users/${uid}/exercise/legs`)
             .once('value')
             .then((snapshot) => {
                 const legs = []
@@ -387,7 +406,7 @@ export const startSetExercises = () => {
                 dispatch(setLegsExercise(legs))
             })
 
-        const shouldersFirebase = database.ref('exercise/shoulders')
+        const shouldersFirebase = database.ref(`users/${uid}/exercise/shoulders`)
             .once('value')
             .then((snapshot) => {
                 const shoulders = []
@@ -401,7 +420,7 @@ export const startSetExercises = () => {
                 dispatch(setShouldersExercise(shoulders))
             })
         
-        const tricepsFirebase = database.ref('exercise/triceps')
+        const tricepsFirebase = database.ref(`users/${uid}/exercise/triceps`)
             .once('value')
             .then((snapshot) => {
                 const triceps = []
