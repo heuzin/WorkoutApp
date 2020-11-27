@@ -7,8 +7,9 @@ import backReducer from '../reducers/backReducer';
 import legsReducer from '../reducers/legsReducer';
 import filtersReducer from '../reducers/filtersReducer';
 import thunk from 'redux-thunk';
+import authReducer from '../reducers/auth';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE__ || compose;
+const composeEnhancers = __REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default () => {
     const store = createStore ( 
@@ -19,7 +20,8 @@ export default () => {
             shoulders: shouldersReducer,
             back: backReducer,
             legs: legsReducer,
-            filters: filtersReducer
+            filters: filtersReducer,
+            auth: authReducer
         }), 
         composeEnhancers(applyMiddleware(thunk))
     )
